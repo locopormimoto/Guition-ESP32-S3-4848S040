@@ -1,7 +1,6 @@
 # Guition-ESP32-S3-4848S040
 
 <p align="center">
-    <img alt="Static Badge" src="https://img.shields.io/badge/version-v1.0%20Beta-green">
     <img alt="Static Badge" src="https://img.shields.io/badge/ESP IDF min version-4.1.0-red">
 </p>
 
@@ -26,4 +25,4 @@ This repo contains sample projects for using the Guition ESP32-S3-4848S040 smart
 - Viewing Angle: Wide viewing IPS screen
 
 ## </> How to Build
-The project can be built by Visual Studio Code. ESP-IDF plugin must be installed on Visual Studio Code. Follow the [Installation Guide](https://github.com/espressif/vscode-esp-idf-extension/#quick-installation-guide) to install the ESP-IDF plugin.
+The project can be compiled with Visual Studio Code. ESP-IDF plugin must be installed on Visual Studio Code. Follow the [Installation Guide](https://github.com/espressif/vscode-esp-idf-extension/#quick-installation-guide) to install the ESP-IDF plugin.
