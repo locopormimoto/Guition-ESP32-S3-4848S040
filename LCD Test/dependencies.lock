@@ -1,33 +1,68 @@
 dependencies:
   espressif/cmake_utilities:
     component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1'
     source:
-      service_url: https://api.components.espressif.com/
+      registry_url: https://components.espressif.com
       type: service
     version: 0.5.3
   espressif/esp_io_expander:
     component_hash: fbc0de4082fc7c207dc98a93a0ed83d1a929a4ecee83cc567afb406f3ee6d4a6
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.4.2'
     source:
-      service_url: https://api.components.espressif.com/
+      registry_url: https://components.espressif.com/
       type: service
     version: 1.0.1
   espressif/esp_lcd_panel_io_additions:
     component_hash: 213d5c4a3c322a48c9f993d6bc2372206d34af95db34e87a3e02601bdcad7ce8
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.4.2'
+    - name: espressif/cmake_utilities
+      registry_url: https://components.espressif.com
+      require: private
+      version: 0.*
+    - name: espressif/esp_io_expander
+      registry_url: https://components.espressif.com
+      require: public
+      version: ^1
     source:
-      service_url: https://api.components.espressif.com/
+      registry_url: https://components.espressif.com/
       type: service
     version: 1.0.1
   espressif/esp_lcd_st7701:
     component_hash: f3efa3c4ab8638f8de4ad4301f6b6155f7dfb09fb441061d15f201ea7a548f77
+    dependencies:
+    - name: espressif/cmake_utilities
+      registry_url: https://components.espressif.com
+      require: private
+      version: 0.*
+    - name: idf
+      require: private
+      version: '>5.0.4,!=5.1.1'
     source:
-      service_url: https://api.components.espressif.com/
+      registry_url: https://components.espressif.com/
       type: service
+    targets:
+    - esp32s3
+    - esp32p4
     version: 1.1.4
   idf:
-    component_hash: null
     source:
       type: idf
-    version: 5.2.1
-manifest_hash: 0ef4910909b8049aedf8d1d2d109380830958b7f76597c1941feedd14c724951
+    version: 5.5.2
+direct_dependencies:
+- espressif/esp_io_expander
+- espressif/esp_lcd_panel_io_additions
+- espressif/esp_lcd_st7701
+- idf
+manifest_hash: 7bf777923eec56f05067eb80b42f844d110cbd6a0eb7ff65a25272f0faf5d389
 target: esp32s3
-version: 1.0.0
+version: 2.0.0

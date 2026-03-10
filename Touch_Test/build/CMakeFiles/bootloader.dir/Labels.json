@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "C:/ESP-IDF/LCD/LCD_test_2/Guition-ESP32-S3-4848S040/Touch Test/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}

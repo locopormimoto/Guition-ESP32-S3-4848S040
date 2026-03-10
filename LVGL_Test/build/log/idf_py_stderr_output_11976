@@ -1,0 +1,3 @@
+Command: cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe -DESP_PLATFORM=1 -DCCACHE_ENABLE=1 C:\ESP-IDF\LCD\LCD_test_2\Guition-ESP32-S3-4848S040\LVGL_Test
+warning: the value 'y' is invalid for SOC_SDM_GROUPS (defined at C:/Espressif/frameworks/esp-idf-v5.5.2\./components/soc/esp32s3/include/soc/Kconfig.soc_caps.in:858), which has type int -- assignment ignored
+warning: user value 68 on the int symbol LWIP_DHCP_OPTIONS_LEN (defined at C:/Espressif/frameworks/esp-idf-v5.5.2/components/lwip/Kconfig:364) ignored due to being outside the active range ([69, 255]) -- falling back on defaults
