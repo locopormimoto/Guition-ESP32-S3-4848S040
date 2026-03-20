@@ -24,7 +24,8 @@
 #include "esp_err.h"
 #include "esp_log.h"
 #include "esp_lcd_st7701.h"
-#include "demos/lv_demos.h"
+//#include "demos/lv_demos.h"
+#include "ui.h"
 
 static const char *TAG = "Main";
 
@@ -359,8 +360,9 @@ void app_main(void)
 	//lv_demo_music();
 	//lv_demo_widgets();
 	//lv_demo_stress();
-	lv_demo_benchmark();
-    
+	//lv_demo_benchmark();
+    ui_init();
+
 	while (1)
 	{
 		vTaskDelay(pdMS_TO_TICKS(10));
