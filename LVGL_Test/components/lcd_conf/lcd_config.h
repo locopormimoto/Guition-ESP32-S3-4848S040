@@ -11,6 +11,8 @@
 extern "C" {
 #endif
 
+#include "esp_lcd_panel_ops.h"
+
 /* LCD hardware pin configuration for ESP32-S3 */
 #define LCD_PIXEL_CLOCK_HZ     (12 * 1000 * 1000)
 #define LCD_BK_LIGHT_ON_LEVEL  1
@@ -56,6 +58,11 @@ extern "C" {
 
 /* LVGL tick period */
 #define LVGL_TICK_PERIOD_MS    1
+
+/* LCD initialization functions */
+esp_lcd_panel_handle_t lcd_init(esp_lcd_rgb_panel_event_callbacks_t *cbs, void *user_data);
+void lcd_backlight_init(void);
+void lcd_backlight_on(void);
 
 #ifdef __cplusplus
 }
