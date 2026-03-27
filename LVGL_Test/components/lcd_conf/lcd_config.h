@@ -64,6 +64,9 @@ esp_lcd_panel_handle_t lcd_init(esp_lcd_rgb_panel_event_callbacks_t *cbs, void *
 void lcd_backlight_init(void);
 void lcd_backlight_on(void);
 
+/* Include LVGL callback functions */
+#include "lcd_lvgl_callbacks.h"
+
 #ifdef __cplusplus
 }
 #endif
