@@ -8,11 +8,13 @@
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "driver/gpio.h"
+#include "driver/i2c_master.h"
 #include "esp_lcd_panel_ops.h"
 #include "esp_lcd_panel_rgb.h"
 #include "esp_lcd_panel_io.h"
 #include "esp_lcd_panel_io_additions.h"
 #include "esp_lcd_st7701.h"
+#include "esp_lcd_touch_gt911.h"
 #include "esp_err.h"
 #include "esp_log.h"
 #include "lcd_config.h"
@@ -205,4 +207,37 @@ void lcd_backlight_on(void)
 	ESP_LOGI(TAG, "Turn on LCD backlight");
 	gpio_set_level(PIN_NUM_BK_LIGHT, LCD_BK_LIGHT_ON_LEVEL);
 #endif
+}
+
+esp_lcd_touch_handle_t touch_init(void)
+{
+	/* Configure I2C master bus using new driver */
+	i2c_master_bus_config_t bus_conf = {
+		.i2c_port = TOUCH_I2C_NUM,
+		.sda_io_num = TOUCH_I2C_SDA,
+		.scl_io_num = TOUCH_I2C_SCL,
+		.clk_source = I2C_CLK_SRC_DEFAULT,
+		.glitch_ignore_cnt = 7,
+		.flags.enable_internal_pullup = true,
+	};
+	i2c_master_bus_handle_t bus_handle = NULL;
+	ESP_ERROR_CHECK(i2c_new_master_bus(&bus_conf, &bus_handle));
+
+	/* Create panel IO for GT911 over I2C */
+	esp_lcd_panel_io_handle_t tp_io_handle = NULL;
+	esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG();
+	ESP_ERROR_CHECK(esp_lcd_new_panel_io_i2c(bus_handle, &tp_io_config, &tp_io_handle));
+
+	/* Initialize GT911 touch controller */
+	esp_lcd_touch_config_t tp_cfg = {
+		.x_max = LCD_H_RES,
+		.y_max = LCD_V_RES,
+		.rst_gpio_num = TOUCH_RST_GPIO,
+		.int_gpio_num = TOUCH_INT_GPIO,
+	};
+	esp_lcd_touch_handle_t tp = NULL;
+	ESP_ERROR_CHECK(esp_lcd_touch_new_i2c_gt911(tp_io_handle, &tp_cfg, &tp));
+
+	ESP_LOGI(TAG, "GT911 touch controller initialized");
+	return tp;
 }

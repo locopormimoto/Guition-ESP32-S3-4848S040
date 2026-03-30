@@ -55,6 +55,13 @@ void lvgl_flush_cb(lv_disp_drv_t *drv, const lv_area_t *area, lv_color_t *color_
  */
 void increase_lvgl_tick(void *arg);
 
+/**
+ * @brief LVGL touch input read callback
+ *
+ * Called by LVGL to read touch input data from the GT911 controller.
+ */
+void lvgl_touch_read_cb(lv_indev_drv_t *drv, lv_indev_data_t *data);
+
 #ifdef __cplusplus
 }
 #endif

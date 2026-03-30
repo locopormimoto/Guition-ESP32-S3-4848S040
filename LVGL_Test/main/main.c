@@ -95,7 +95,18 @@ void app_main(void)
 #if CONFIG_DOUBLE_FB
 	disp_drv.full_refresh = true;
 #endif
-	lv_disp_t *disp = lv_disp_drv_register(&disp_drv);
+	lv_disp_drv_register(&disp_drv);
+
+	ESP_LOGI(TAG, "Initialize touch controller");
+	esp_lcd_touch_handle_t tp = touch_init();
+
+	ESP_LOGI(TAG, "Register touch input device to LVGL");
+	static lv_indev_drv_t indev_drv;
+	lv_indev_drv_init(&indev_drv);
+	indev_drv.type = LV_INDEV_TYPE_POINTER;
+	indev_drv.read_cb = lvgl_touch_read_cb;
+	indev_drv.user_data = tp;
+	lv_indev_drv_register(&indev_drv);
 
 	ESP_LOGI(TAG, "Install LVGL tick timer");
 	const esp_timer_create_args_t lvgl_tick_timer_args = {

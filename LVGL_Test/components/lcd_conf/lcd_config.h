@@ -12,6 +12,15 @@ extern "C" {
 #endif
 
 #include "esp_lcd_panel_ops.h"
+#include "esp_lcd_touch.h"
+
+/* Touch I2C configuration */
+#define TOUCH_I2C_NUM          I2C_NUM_0
+#define TOUCH_I2C_SDA          19
+#define TOUCH_I2C_SCL          45
+#define TOUCH_I2C_CLK_HZ       (400 * 1000)
+#define TOUCH_RST_GPIO         (-1)
+#define TOUCH_INT_GPIO         (-1)
 
 /* LCD hardware pin configuration for ESP32-S3 */
 #define LCD_PIXEL_CLOCK_HZ     (12 * 1000 * 1000)
@@ -63,6 +72,9 @@ extern "C" {
 esp_lcd_panel_handle_t lcd_init(esp_lcd_rgb_panel_event_callbacks_t *cbs, void *user_data);
 void lcd_backlight_init(void);
 void lcd_backlight_on(void);
+
+/* Touch initialization */
+esp_lcd_touch_handle_t touch_init(void);
 
 /* Include LVGL callback functions */
 #include "lcd_lvgl_callbacks.h"

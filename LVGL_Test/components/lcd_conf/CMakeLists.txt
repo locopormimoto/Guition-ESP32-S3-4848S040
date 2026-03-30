@@ -1,3 +1,3 @@
 idf_component_register(SRCS "lcd_lvgl_callbacks.c" "lcd_config.c"
                        INCLUDE_DIRS "."
-                       REQUIRES "esp_lcd" "driver" "esp_common" "freertos" "log" "espressif__esp_lcd_panel_io_additions" "espressif__esp_lcd_st7701" "lvgl")
+                       REQUIRES "esp_lcd" "driver" "esp_common" "freertos" "log" "espressif__esp_lcd_panel_io_additions" "espressif__esp_lcd_st7701" "espressif__esp_lcd_touch" "espressif__esp_lcd_touch_gt911" "lvgl")

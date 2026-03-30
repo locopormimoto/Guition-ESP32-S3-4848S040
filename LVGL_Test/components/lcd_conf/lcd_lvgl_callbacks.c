@@ -7,6 +7,7 @@
 #include "lcd_lvgl_callbacks.h"
 #include "lcd_config.h"
 #include "esp_lcd_panel_ops.h"
+#include "esp_lcd_touch.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 #include "lvgl.h"
@@ -79,4 +80,21 @@ void increase_lvgl_tick(void *arg)
 {
     /* Tell LVGL how many milliseconds has elapsed */
     lv_tick_inc(LVGL_TICK_PERIOD_MS);
+}
+
+void lvgl_touch_read_cb(lv_indev_drv_t *drv, lv_indev_data_t *data)
+{
+	esp_lcd_touch_handle_t tp = (esp_lcd_touch_handle_t)drv->user_data;
+
+	esp_lcd_touch_read_data(tp);
+
+	esp_lcd_touch_point_data_t point;
+	uint8_t count = 0;
+	if (esp_lcd_touch_get_data(tp, &point, &count, 1) == ESP_OK && count > 0) {
+		data->point.x = point.x;
+		data->point.y = point.y;
+		data->state = LV_INDEV_STATE_PR;
+	} else {
+		data->state = LV_INDEV_STATE_REL;
+	}
 }
